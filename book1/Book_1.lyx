@@ -34,7 +34,7 @@
   \renewcommand*{\printchaptertitle}[1]{%
     \centering \chaptitlefont\textsc{##1}}}
   \renewcommand*{\afterchaptertitle}{\par\vspace\par}
-\chapterstyle{hpmor}
+\chapterstyle{customchapterstyle}
 
 \usepackage{fmtcount}
 \usepackage{changepage}
@@ -582,13 +582,8 @@ status open
 \backslash
 small
 \backslash
-diamondpar{Here ends 
-\backslash
-textit{The Metropolitan Man}.
- Thanks to Alexander Wales for the text, to Justin Maller for the artwork
- on the book cover and to Eneasz Brodski for the audio book.
- Superman, Lex Luthor and other characters are the intellectual property
- of DC.}
+diamondpar{Repetition is the mother of learning, the father of action, which
+ makes it the architect of accomplishment.}
 \end_layout
 
 \end_inset
