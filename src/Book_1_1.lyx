@@ -283,7 +283,9 @@ vfill
 
 {
 \backslash
-textit{Published as a web serial on} fictionpress.com}
+textit{Published on} fictionpress.com 
+\backslash
+textit{and} royalroad.com}
 \backslash
 
 \backslash
@@ -366,14 +368,20 @@ Mother of Learning © Domagoj Kurmaic.
 \begin_layout Standard
 
 \size footnotesize
-Text downloaded from https://www.fictionpress.com/s/2961893
+Text downloaded from 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+url{royalroad.com/fiction/21220}
 \end_layout
 
-\begin_layout Standard
+\end_inset
 
-\size footnotesize
-check the site for updates and new chapters.
- 
+
 \end_layout
 
 \begin_layout Standard
@@ -393,7 +401,7 @@ status open
 
 
 \backslash
-url{https://www.pixiv.net/en/artworks/69959210}
+url{pixiv.net/en/artworks/69959210}
 \end_layout
 
 \end_inset
@@ -483,7 +491,91 @@ setcounter{page}{1}
 \begin_layout Standard
 \begin_inset CommandInset include
 LatexCommand include
-filename "chap_001.lyx"
+filename "../raw/latex/chap_001.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+filename "../raw/latex/chap_002.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+filename "../raw/latex/chap_003.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+filename "../raw/latex/chap_004.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+filename "../raw/latex/chap_005.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+filename "../raw/latex/chap_006.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+filename "../raw/latex/chap_007.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+filename "../raw/latex/chap_008.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+filename "../raw/latex/chap_009.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+filename "../raw/latex/chap_010.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+filename "../raw/latex/chap_011.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+filename "../raw/latex/chap_012.lyx"
+
+\end_inset
+
+
+\begin_inset CommandInset include
+LatexCommand include
+filename "../raw/latex/chap_013.lyx"
 
 \end_inset
 

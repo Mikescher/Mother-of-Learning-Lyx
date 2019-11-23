@@ -2,10 +2,14 @@
 
 Func<int, string>[] MASTER_FUNCS = new[]
 {
-	(Func<int, string>)(i => i>=1  && i<=26  ? "Book_1.lyx" : null),
-	(Func<int, string>)(i => i>=27 && i<=54  ? "Book_2.lyx" : null),
-	(Func<int, string>)(i => i>=55 && i<=82  ? "Book_3.lyx" : null),
-	(Func<int, string>)(i => i>=83 && i<=999 ? "Book_4.lyx" : null),
+	(Func<int, string>)(i => i>=1  && i<=13 ? "../../src/Book_1_1.lyx" : null),
+	(Func<int, string>)(i => i>=14 && i<=26 ? "../../src/Book_1_2.lyx" : null),
+	(Func<int, string>)(i => i>=27 && i<=40 ? "../../src/Book_2_1.lyx" : null),
+	(Func<int, string>)(i => i>=41 && i<=54 ? "../../src/Book_2_2.lyx" : null),
+	(Func<int, string>)(i => i>=55 && i<=68 ? "../../src/Book_3_1.lyx" : null),
+	(Func<int, string>)(i => i>=69 && i<=82 ? "../../src/Book_3_2.lyx" : null),
+	(Func<int, string>)(i => i>=83 && i<=96 ? "../../src/Book_3_3.lyx" : null),
+	(Func<int, string>)(i => i>=97          ? "../../src/Book_3_4.lyx" : null),
 };
 
 string cqp = Path.GetDirectoryName(Util.CurrentQueryPath);
@@ -20,7 +24,9 @@ void Main()
 		
 		var output = Process(input, out var outfilename);
 		
-		File.WriteAllText(Path.Combine(cqp, "latex", outfilename), output, Encoding.UTF8);
+		WriteIfDiff(Path.Combine(cqp, "latex", outfilename), output);
+		
+		Path.GetFileName(f).Dump();
 	}
 }
 
@@ -44,6 +50,8 @@ string Process(string html, out string filename)
 	title = title.Substring("<h1>".Length, title.Length - "<h1>".Length - "</h1>".Length);
 	int chapnum = int.Parse(title.Split(' ')[0].TrimEnd('.'));
 	title = title.Substring(title.Split(' ')[0].Length+1).TrimStart();
+
+	title = title.Replace("&rsquo;", "'");
 
 	filename = $"chap_{chapnum:000}.lyx";
 
@@ -101,13 +109,19 @@ string Process(string html, out string filename)
 
 		line = line.Replace("<br>", "\n\\begin_inset Newline newline\\end_inset\n");
 
+		line = line.Replace("&gt;", ">");
+		line = line.Replace("&lt;", "<");
+
 		line = line.Replace("“", "\"");
 		line = line.Replace("”", "\"");
 		line = line.Replace("’", "'");
 		line = line.Replace("‘", "'");
 
-		if (line.Contains("<")) throw new Exception($"Assertion failed :: No tags");
-		if (line.Contains(">")) throw new Exception($"Assertion failed :: No tags");
+		if (Regex.IsMatch(line, @"<.*/>")) throw new Exception($"Assertion failed :: No html entities");
+		if (Regex.IsMatch(line, @"<.*>")) throw new Exception($"Assertion failed :: No html entities");
+		if (Regex.IsMatch(line, @"</.*>")) throw new Exception($"Assertion failed :: No html entities");
+		
+		if (Regex.IsMatch(line, @"&[^\s]*;")) throw new Exception($"Assertion failed :: No html entities");
 		
 		line = ColumnSplit(line, 80);
 
@@ -211,9 +225,17 @@ string ColumnSplit(string text, int len)
 	return output.ToString();
 }
 
+void WriteIfDiff(string path, string content)
+{
+	var a = TrimComments(content);
+	var b = TrimComments(File.Exists(path) ? File.ReadAllText(path, Encoding.UTF8) : string.Empty);
 
+	if (a == b) return;
 
+	File.WriteAllText(path, content, Encoding.UTF8);
+}
 
-
-
-
+string TrimComments(string data)
+{
+	return string.Join("\n", data.Replace("\r\n", "\n").Split('\n', StringSplitOptions.None).Where(p => !p.StartsWith("#")));
+}
