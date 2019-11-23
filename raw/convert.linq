@@ -25,8 +25,6 @@ void Main()
 		var output = Process(input, out var outfilename);
 		
 		WriteIfDiff(Path.Combine(cqp, "latex", outfilename), output);
-		
-		Path.GetFileName(f).Dump();
 	}
 }
 
@@ -74,11 +72,12 @@ string Process(string html, out string filename)
 		
 		if (line == @"<p style=""text-align: center"">* * *</p>")
 		{
-			// TODO ----BREAK----
-
 			bc.AppendLine("\\begin_layout Standard");
-			bc.AppendLine("- break -");
-			bc.AppendLine("\\end_layout");
+			bc.AppendLine("\\align center");
+			bc.AppendLine("\\begin_inset Graphics");
+			bc.AppendLine("\tfilename ../../src/fleur.png");
+			bc.AppendLine("\twidth 50page%");
+			bc.AppendLine("\\end_inset");
 			bc.AppendLine("");
 
 			continue;
@@ -230,9 +229,16 @@ void WriteIfDiff(string path, string content)
 	var a = TrimComments(content);
 	var b = TrimComments(File.Exists(path) ? File.ReadAllText(path, Encoding.UTF8) : string.Empty);
 
-	if (a == b) return;
+	if (a == b)
+	{
+
+		("[ ]  " + Path.GetFileName(path)).Dump();
+		return;
+	}
 
 	File.WriteAllText(path, content, Encoding.UTF8);
+
+	("[X]  " + Path.GetFileName(path)).Dump();
 }
 
 string TrimComments(string data)

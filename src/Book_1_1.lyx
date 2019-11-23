@@ -269,7 +269,7 @@ baselineskip}
 
 \begin_layout Plain Layout
 
-{Arc I}
+{Arc I - Part 1}
 \end_layout
 
 \begin_layout Plain Layout
@@ -600,27 +600,35 @@ status open
 pagestyle{myheadings}
 \end_layout
 
-\end_inset
+\begin_layout Plain Layout
 
 
+\backslash
+renewcommand{
+\backslash
+contentsname}{Contents}
 \end_layout
 
-\begin_layout Standard
-\paragraph_spacing single
-\noindent
-
-\noun on
-\begin_inset CommandInset toc
-LatexCommand tableofcontents
-
-\end_inset
+\begin_layout Plain Layout
 
 
+\backslash
+begin{KeepFromToc}        
 \end_layout
 
-\begin_layout Standard
-\begin_inset ERT
-status open
+\begin_layout Plain Layout
+
+
+\backslash
+tableofcontents     
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{KeepFromToc}
+\end_layout
 
 \begin_layout Plain Layout
 
