@@ -34,7 +34,7 @@ Cover-Vorlage:  epubli Cover Schwarz
 | 5 | Arc III - Part 1 | 372      | 8.97 €
 | 6 | Arc III - Part 2 | 346 (+2) | 8.57 €
 | 7 | Arc III - Part 3 | 396      | 9.37 €
-| 8 | Arc III - Part 4 |          | 
+| 8 | Arc III - Part 4 | 272 (+2) | 7.29 €
 
 
 
@@ -164,5 +164,15 @@ Cover-Vorlage:  epubli Cover Schwarz
 
 ### Book 8 (Arc III - Part 4)
 ~~~
-???
+97  Illusory
+98  Beneath the Surface
+99  Powderkeg
+100 Sacrifice
+101 The Switch
+102 Giants
+103 Window of Opportunity
+104 I Win (I)
+105 I Win (II)
+106 I Win (III)
+107 Epilogue
 ~~~
